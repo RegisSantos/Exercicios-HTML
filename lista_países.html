@@ -1,0 +1,29 @@
+<meta charset="UTF-8">
+
+
+<script>
+
+	/*
+        Descrição: Mostra na tela a lista de países pertencentes à America Latina, em ordem alfabética, usando o laço de repetição "for";
+   */
+
+   var paises = ['Argentina', 'Bolívia', 'Brasil', 'Chile', 'Colômbia', 'Equador', 'Guiana', 'Paraguai', 'Peru', 'Uruguai', 'Venezuela'];
+
+function pulaLinha() {
+	document.write("<br>");
+	document.write("<br>");
+}
+
+function listaPaíses() {
+	for(i = 0; i < paises.length; i++) {
+		document.write (paises[i]);
+		pulaLinha();
+	}//fim for
+}
+
+listaPaíses();
+
+</script>
+
+
+

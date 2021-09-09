@@ -1,0 +1,142 @@
+<canvas width="600" height="400"></canvas>
+<meta charset="UTF-8">
+
+<script>
+
+    /*
+        Descrição: O clássico jogo de ping-pong, onde o usuário interaje com a máquina, somando e contabilizando pontos para ambos, toda vez que a bolinha atingir uma das bordas;
+    */
+
+    var xBola = 300; //coordenada x inicial da bola
+    var yBola = 200; //coordenada y inicial da bola
+    var sentidoX = 1;
+    var sentidoY = 1;
+
+    const larguraRaquete = 10;
+    const alturaRaquete = 80;
+    const raioCirculo = 7.5;
+
+    var taxaErroRaquete = 0.62;
+    var tecla;
+
+    const xRaquete = 5;
+    const xRaqueteAdversaria = 585;
+    var yRaquete = 160;
+    var yRaqueteAdversaria;
+    var cima = 38;
+    var baixo = 40;
+
+    var velocidadeRaquete = 12;
+
+    var pontos = 0;
+    var pontosAdversario = 0;
+
+    var tela = document.querySelector("canvas");
+    var pincel = tela.getContext("2d");
+
+    pincel.fillStyle = "black";
+    pincel.fillRect(0,0,600,400);
+
+    function desenhaRaquete(xRaquete, y){
+
+        pincel.fillStyle = "white";
+        pincel.fillRect(xRaquete, y, larguraRaquete, alturaRaquete);
+    }
+
+    function desenhaCirculo(xCirculo, yCirculo){
+
+        pincel.fillStyle = "white";
+        pincel.beginPath();
+        pincel.arc(xCirculo, yCirculo, raioCirculo, 0, 2 * Math.PI);
+        pincel.fill();
+    }
+
+    function limpaTela(){
+
+        pincel.clearRect(0, 0, 600, 400);
+        pincel.fillStyle = "black";
+        pincel.fillRect(0, 0, 600, 400);
+    }
+
+    function leDoTeclado(evento){
+
+        tecla = evento.keyCode;
+
+        if(tecla == cima){
+            yRaquete = yRaquete - velocidadeRaquete;
+        }else if(tecla == baixo){
+            yRaquete = yRaquete + velocidadeRaquete;
+        }
+    }
+
+    document.onkeydown = leDoTeclado;
+
+    function atualizaTela(){
+
+        limpaTela();
+
+        yRaqueteAdversaria = yBola + (Math.random() - taxaErroRaquete);
+
+        if(xBola > 600){        
+            sentidoX = -1;
+        }else if(xBola < 0){
+            sentidoX = 1
+        }
+
+        if(yBola > 400){
+            sentidoY = -1;
+        }else if(yBola < 0){
+            sentidoY = 1;
+        }
+
+        if((xBola == xRaquete + larguraRaquete) && (yBola > yRaquete) && (yBola < yRaquete + alturaRaquete)){
+            sentidoX = 1;
+        }
+
+        if((xBola == xRaqueteAdversaria) && (yBola > yRaqueteAdversaria) && (yBola < yRaqueteAdversaria + alturaRaquete)){
+            sentidoX = -1;
+        }
+
+        if(yRaquete < 5){
+            velocidadeRaquete = 0;
+            if(tecla == baixo){
+                velocidadeRaquete = 12;
+            }
+        }else if(yRaquete > 395 - alturaRaquete){
+            velocidadeRaquete = 0;
+            if(tecla == cima){
+                velocidadeRaquete = 12;
+            }
+        }
+
+        desenhaCirculo(xBola, yBola);
+
+        xBola = xBola + sentidoX;
+        yBola = yBola + sentidoY;
+
+        if(xBola == 0){
+            pontosAdversario++;
+        }
+
+        pincel.font = "50px Georgia";
+        pincel.fillStyle = "white";
+        pincel.fillText(Math.round(pontosAdversario/2), 400, 75);
+        pincel.font = "20px Georgia";
+        pincel.fillText("ADVERSARIO", 355, 30);
+
+        if(xBola == 600){
+            pontos++;
+        }
+
+        pincel.font = "50px Georgia";
+        pincel.fillStyle = "white";
+        pincel.fillText(Math.round(pontos/2), 200, 75);
+        pincel.font = "20px Georgia";
+        pincel.fillText("VOCÊ", 190, 30);
+
+        desenhaRaquete(xRaquete, yRaquete); //minha Raquete
+        desenhaRaquete(xRaqueteAdversaria, yRaqueteAdversaria); //Raquete adversaria
+    }
+
+    setInterval(atualizaTela, 1);
+</script>
