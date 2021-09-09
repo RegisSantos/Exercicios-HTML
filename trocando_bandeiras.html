@@ -1,0 +1,65 @@
+<canvas width="600" height="400"></canvas>
+
+<script>
+
+	/*
+		Descrição: Inicialmente, o arquivo mostra a bandeira do Brasil. 3 Segundos depois, troca para a bandeira da Alemanha. E assim sucessivamente;
+	*/
+
+	function desenhaBandeiraBrasil()
+	{
+		var tela = document.querySelector('canvas');
+		var pincel = tela.getContext('2d');
+
+		pincel.fillStyle = 'green';
+		pincel.fillRect(0, 0, 600, 400);
+
+		pincel.fillStyle = 'yellow';
+		pincel.beginPath();
+		pincel.moveTo(300, 25);
+		pincel.lineTo(575, 200);
+		pincel.lineTo(300, 375);
+		pincel.lineTo(25, 200);
+		pincel.fill();
+
+		pincel.fillStyle = 'darkblue';
+		pincel.beginPath();
+		pincel.arc(300, 200, 80, 0,2*3.14);
+		pincel.fill();
+	}
+
+	function desenhaBandeiraAlemanha()
+	{
+		var tela = document.querySelector('canvas');
+		var pincel = tela.getContext('2d');
+
+		pincel.fillStyle = 'black';
+		pincel.fillRect(0, 0, 600, 400);
+
+		pincel.fillStyle = 'red';
+		pincel.fillRect(0, 133, 600, 400);
+
+		pincel.fillStyle = 'yellow';
+		pincel.fillRect(0, 266, 600, 400);
+	}
+
+	var mostraBrasil = true;
+
+	function trocaBandeira()
+	{
+		if(mostraBrasil == true)
+			{
+				desenhaBandeiraBrasil();
+				mostraBrasil = false;
+			}//fim if
+		else
+			{
+				desenhaBandeiraAlemanha();
+				mostraBrasil = true;
+			}//fim else}
+	}
+
+	setInterval(trocaBandeira, 3000);
+
+
+</script>
