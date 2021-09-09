@@ -1,0 +1,54 @@
+<meta charset="UTF-8">
+
+<script>
+
+	function pulaLinha()
+		{
+			document.write("<br>");
+			document.write("<br>");
+			}
+
+	function mostra(frase)
+		{
+			document.write(frase);
+			pulaLinha();
+			}
+
+		var loginCadastrado = "AluraCursos";
+		var senhaCadastrada = "Alura123";
+
+		var tentativaAtual = 1;
+		var maxTentativas = 3;
+
+		while(tentativaAtual <= maxTentativas)
+			{
+				var loginInformado = prompt("Informe seu login: ");
+				var senhaInformada = prompt("Informe sua senha: ");
+
+				if(loginInformado == loginCadastrado && senhaInformada == senhaCadastrada)
+					{
+						alert("Login efetuado com sucesso. Bem-vindo(a), " + loginCadastrado + "!");
+						break;
+					}//fim if
+
+				else
+				{
+					if (tentativaAtual == maxTentativas)
+						{
+							alert("Limite de tentativas excedido. Acesso Negado.");
+						}//fim if
+
+					else
+						{
+							alert("Login e/ou senha incorreto(s). Tente novamente: ");
+						}//fim else
+
+				}//fim else
+
+				tentativaAtual++
+
+			}//fim while
+
+		mostra("FIM!");
+
+</script>
