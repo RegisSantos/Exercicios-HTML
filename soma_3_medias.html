@@ -1,0 +1,45 @@
+<meta charset="UTF-8">
+
+<script>
+
+	function pulaLinha()
+		{
+			document.write("<br>");
+			document.write("<br>");
+			}
+
+	function mostra(frase)
+		{
+			document.write(frase);
+			pulaLinha();
+			}
+
+	function calculaMedia(n1, n2, n3)
+		{
+			var media = ((n1+n2+n3)/3);
+			return media;
+			}
+
+	var n1 = parseInt(prompt("Informe a 1ª nota: "));
+	var n2 = parseInt(prompt("Informe a 2ª nota: "));
+	var n3 = parseInt(prompt("Informe a 3ª nota: "));
+
+	var mediaCalculada = calculaMedia(n1, n2, n3);
+	mostra("A média calculada é: " + mediaCalculada);
+
+	if(mediaCalculada >= 6)
+		{
+			mostra("Aluno aprovado.");
+			}
+
+	if(mediaCalculada < 5)
+		{
+			mostra("Aluno reprovado.");
+			}
+
+	if(mediaCalculada > 5 && mediaCalculada < 6)
+		{
+			mostra("Aluno em recuperação.");
+			}
+
+</script>

@@ -1,0 +1,32 @@
+<meta charset="UTF-8">
+
+<script>
+
+	function pulaLinha()
+		{
+			document.write("<br>");
+			document.write("<br>");
+			}
+
+	function mostra(frase)
+		{
+			document.write(frase);
+			pulaLinha();
+			}
+
+	var cont = 30
+
+	while(cont <= 40)
+		{
+			mostra(cont);
+			cont=cont+1;
+
+			if(cont == 33 || cont == 37)
+				{
+					cont=cont+1
+				}
+		}
+
+	mostra("FIM!");
+
+</script>

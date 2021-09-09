@@ -1,0 +1,31 @@
+<meta charset="UTF-8">
+
+<script>
+
+	function pulaLinha()
+		{
+			document.write("<br>");
+			document.write("<br>");
+			}
+
+	function mostra(frase)
+		{
+			document.write(frase);
+			pulaLinha();
+			}
+
+	var totalSalario = 0;
+	var contador = 1;
+
+	var totalColaboradores = parseInt(prompt("Informe o total de colaboradores da empresa: "));
+
+	while(contador <= totalColaboradores)
+		{ 			
+			var salario = parseInt(prompt("Informe o valor do " + contador + "º salário: "));
+			var totalSalario = totalSalario + salario;
+			contador++;
+		}//fim while
+		
+	mostra("O total de salários a serem pagos é de: R$" + totalSalario);
+
+</script>

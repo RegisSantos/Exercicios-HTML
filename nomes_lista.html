@@ -1,0 +1,27 @@
+<meta charset="UTF-8">
+
+<script>
+
+	function pulaLinha()
+		{
+			document.write("<br>");
+			document.write("<br>");
+			}
+
+	function mostra(frase)
+		{
+			document.write(frase);
+			pulaLinha();
+			}
+
+	var quantidade = parseInt(prompt("Informe quantas pessoas estarão na lista: "));
+	var contador = 1
+
+	while(contador <= quantidade)
+		{
+			var nome = prompt("Informe o nome do " + contador + "º convidado: ");
+			mostra(contador + "º - " + nome);
+			contador++
+		}//fim while
+
+</script>

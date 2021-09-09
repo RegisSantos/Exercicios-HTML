@@ -1,0 +1,40 @@
+<meta charset="UTF-8">
+
+<script>
+
+	var maximoTentativas = 3;
+	var tentativaAtual = 1;
+	
+	while(tentativaAtual <= maximoTentativas)
+		{
+			var loginCadastrado = "alura";
+			var senhaCadastrada = "alura321";
+
+			var loginInformado = prompt("Informe seu login: ");
+			var senhaInformada = prompt("Informe sua senha: ");
+
+			if(loginInformado==loginCadastrado && senhaInformada==senhaCadastrada)
+			{
+				alert("Bem-vindo, " + loginCadastrado);
+				tentativaAtual=maximoTentativas;
+				}//fim if
+
+			else
+			{
+				if(tentativaAtual==3)
+					{
+						alert("Máximo de tentativas ultrapassado! Acesso Negado!");
+						}//fim if
+
+				else
+					{
+						alert("Login negado! Tente Novamente!");
+						}//fim else
+
+			}//fim else
+
+			tentativaAtual=tentativaAtual+1
+
+		}//fim while
+
+</script>
